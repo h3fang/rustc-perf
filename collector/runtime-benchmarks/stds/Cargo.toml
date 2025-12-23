@@ -1,0 +1,11 @@
+[package]
+name = "std-bench"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+benchlib = { path = "../../benchlib" }
+rand = { version = "0.9.0", default-features = false, features = ["alloc"] }
+rand_xorshift = "0.4.0"
+
+[workspace]
