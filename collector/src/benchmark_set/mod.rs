@@ -66,7 +66,7 @@ pub fn get_benchmark_sets_for_target(target: Target) -> Vec<BenchmarkSet> {
     ];
 
     match target {
-        Target::X86_64UnknownLinuxGnu => {
+        Target::Aarch64UnknownLinuxGnu | Target::X86_64UnknownLinuxGnu => {
             // Set 0 automatically runs runtime benchmarks and the rustc benchmark, so it should
             // receive less compile-time benchmarks to balance.
             // Set 0 also runs all stable benchmarks, but those are separate and we don't

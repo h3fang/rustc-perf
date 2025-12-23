@@ -369,6 +369,8 @@ impl PartialOrd for Scenario {
 /// Presently we only support x86_64
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum Target {
+    /// `aarch64-unknown-linux-gnu`
+    Aarch64UnknownLinuxGnu,
     /// `x86_64-unknown-linux-gnu`
     X86_64UnknownLinuxGnu,
 }
@@ -376,12 +378,13 @@ pub enum Target {
 impl Target {
     pub fn as_str(self) -> &'static str {
         match self {
+            Target::Aarch64UnknownLinuxGnu => "aarch64-unknown-linux-gnu" ,
             Target::X86_64UnknownLinuxGnu => "x86_64-unknown-linux-gnu",
         }
     }
 
     pub fn all() -> Vec<Self> {
-        vec![Self::X86_64UnknownLinuxGnu]
+        vec![Self::Aarch64UnknownLinuxGnu, Self::X86_64UnknownLinuxGnu]
     }
 
     pub fn default_targets() -> Vec<Self> {
@@ -397,6 +400,7 @@ impl FromStr for Target {
     type Err = String;
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         Ok(match s.to_ascii_lowercase().as_str() {
+            "aarch64-unknown-linux-gnu" => Target::Aarch64UnknownLinuxGnu,
             "x86_64-unknown-linux-gnu" => Target::X86_64UnknownLinuxGnu,
             _ => return Err(format!("{s} is not a valid target")),
         })

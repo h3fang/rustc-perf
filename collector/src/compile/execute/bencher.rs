@@ -102,6 +102,7 @@ impl<'a> BenchProcessor<'a> {
         };
 
         let target = match target {
+            Target::Aarch64UnknownLinuxGnu => database::Target::Aarch64UnknownLinuxGnu,
             Target::X86_64UnknownLinuxGnu => database::Target::X86_64UnknownLinuxGnu,
         };
 
