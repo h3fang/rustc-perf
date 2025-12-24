@@ -195,7 +195,7 @@ fn main() {
                 }
             },
         );
-        group.register_benchmark("str::char_count::ru_huge::case04_while_loop", || {
+        group.register_benchmark("str::char_count::ru_huge::case03_manual_char_len", || {
             fn manual_char_len(s: &str) -> usize {
                 let s = s.as_bytes();
                 let mut c = 0;
